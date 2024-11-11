@@ -1,15 +1,12 @@
-const http = require("http");
-const html = require("fs").readFileSync("./index.html");
-const PORT = 8000;
+const express = require("express");
+const app = express();
+const PORT = 3000;
 
-//webサーバを作る
-const server = http.createServer((req,res)=>{
-    //ブラウザからアクセスが来た時の処理
-    res.writeHead(200,{"Content-Type":"text/html"});
-    res.write(html);
-    res.end();
-});
+app.get("/",(req,res)=>{
+    console.log("hello express");
+})
 
-server.listen(PORT,()=>{
-    console.log("server running!");
-});
+//expressを使ってローカルサーバを立ち上げる
+app.listen(PORT,()=>{
+    console.log("サーバが起動しました");
+})
